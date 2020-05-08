@@ -222,7 +222,7 @@ header {
 .description {
    display: flex;
    flex-direction: column;
-   align-self: end;
+   align-self: flex-end;
    margin-top: 3rem;
 }
 
@@ -306,7 +306,7 @@ header {
    }
 
    .logo-wrap {
-      justify-content: start;
+      justify-content: flex-start;
    }
 
    .nav-toggle {
@@ -316,7 +316,7 @@ header {
    .nav {
       visibility: visible;
       display: flex;
-      justify-content: end;
+      justify-content: flex-end;
       margin: 0;
    }
 
