@@ -1,0 +1,379 @@
+*,
+*::before,
+*::after {
+   box-sizing: border-box;
+   margin: 0;
+   padding: 0;
+   list-style-type: none;
+   text-decoration: none;
+}
+
+html {
+   font-size: 62.5%;
+   font-size: clamp(50.5%, 2vw, 62.5%);
+}
+
+$vars : (
+   /** COLOR */
+   headerFooter: #2E323F,
+   heroFooterBg: #3B4050,
+   secOneBg: #cacaca,
+   heading: #A59678,
+   button: #A59678,
+   /** FONT-SIZE */
+   navFs: 1.8rem,
+   buttonFs: 2.4rem,
+   heroP: 2.4rem,
+   secOneThreeP: 1.8rem,
+   secTwoP: 2.1rem,
+   footerP: 1.6rem,
+);
+
+@mixin var($property, $variable) {
+   #{$property}: map-get($vars, $variable);
+   #{$property}: var(--#{$variable});
+}
+
+
+:root {
+
+   @each $property,
+   $value in $vars {
+      --#{$property}: #{$value};
+   }
+}
+
+body {
+   font-family: 'Montserrat', sans-serif;
+}
+
+/*
+   * font-family: 'Play', sans-serif;
+
+   * font-family: 'Montserrat', sans-serif;
+
+*/
+
+::selection {
+   color: #fff;
+   @include var(background-color, heading)
+}
+
+img {
+   max-width: 100%;
+}
+
+/** Headings */
+h1,
+h2,
+h3,
+h4,
+h5 {
+   @include var(color, heading);
+   font-family: 'Play', sans-serif;
+}
+
+h1 {
+   color: #fff;
+   font-size: 6.5rem;
+}
+
+.secondary__heading--color {
+   @include var(color, heading)
+}
+
+h2 {
+   font-size: 3.6rem;
+   margin-bottom: 0.60em;
+}
+
+h3 {
+   font-size: 3rem;
+   margin-bottom: 0.75em;
+}
+
+h4 {
+   color: #fff;
+   font-size: 2.4rem;
+   margin: 1.5rem 0 2.5rem 0;
+}
+
+h5 {
+   font-size: 2.1rem;
+   margin-bottom: 1rem;
+}
+
+p {
+   line-height: 1.5;
+}
+
+header {
+   @include var(background-color, headerFooter);
+   padding: 2rem 0;
+}
+
+.container {
+   width: 90%;
+   max-width: 1200px;
+   margin: 0 auto;
+   /* added for nav-toggle positioning */
+   position: relative;
+}
+
+.logo-wrap {
+   display: flex;
+   height: 100%;
+   width: 100%;
+   align-items: center;
+   justify-content: center;
+}
+
+
+.nav {
+   width: 100%;
+   font-family: 'Play', sans-serif;
+   @include var(font-size, navFs);
+   text-transform: uppercase;
+   text-align: center;
+}
+
+.nav-toggle {
+   cursor: pointer;
+   border: 0;
+   width: 5rem;
+   height: 1.5rem;
+   background: transparent;
+   color: white;
+   transition: all .5s ease-in;
+   position: absolute;
+   left: 0;
+}
+
+.nav-toggle:focus,
+.nav-toggle:hover {
+   opacity: .75;
+}
+
+.hamburger {
+   width: 50%;
+   position: relative;
+}
+
+.hamburger,
+.hamburger::before,
+.hamburger::after {
+   display: block;
+   margin: 0 auto;
+   height: .35rem;
+   background: white;
+}
+
+.hamburger::before,
+.hamburger::after {
+   content: '';
+   width: 100%;
+}
+
+.hamburger::before {
+   transform: translateY(-.7rem);
+}
+
+.hamburger::after {
+   transform: translateY(.3rem);
+}
+
+.nav {
+   visibility: hidden;
+   height: 0;
+   position: absolute;
+}
+
+.nav--visible {
+   visibility: visible;
+   height: auto;
+   position: relative;
+   line-height: 2.2;
+}
+
+.nav__link {
+   color: #fff;
+}
+
+.nav__link:hover {
+   opacity: 0.75;
+}
+
+.nav__link--button {
+   @include var(background-color, button);
+   padding: 1rem 1.5rem;
+   border-radius: 2rem;
+}
+
+.hero-section {
+   @include var(background-color, heroFooterBg);
+   padding: 10rem 0;
+   color: #fff;
+}
+
+.hero-section p {
+   @include var(font-size, heroP)
+}
+
+.description {
+   display: flex;
+   flex-direction: column;
+   align-self: end;
+   margin-top: 3rem;
+}
+
+.main__button {
+   display: inline-block;
+   @include var(background-color, button);
+   @include var(font-size, buttonFs);
+   font-family: 'play', sans-serif;
+   padding: 1.5rem 2rem;
+   margin-top: 2rem;
+   color: #fff;
+   text-transform: uppercase;
+
+   border: .2rem solid;
+   @include var(border-color, button);
+   border-radius: 3rem;
+   transition: all .4s ease;
+}
+
+.main__button:hover {
+   background: transparent;
+}
+
+.section-one {
+   text-align: center;
+   @include var(background-color, secOneBg);
+   padding: 8rem 0;
+   @include var(font-size, secOneThreeP)
+}
+
+.col+.col {
+   margin-top: 3rem;
+}
+
+.section-two {
+   padding: 10rem 0;
+   @include var(font-size, secTwoP)
+}
+
+.section__two--img {
+   margin: 5rem 0;
+}
+
+.right__side {
+   text-align: center;
+}
+
+.sidebar {
+   color: #fff;
+   @include var(background-color, heroFooterBg);
+   margin-top: 2.5rem;
+   padding: 1.2em;
+}
+
+.footer-section {
+   @include var(background-color, headerFooter);
+   color: #fff;
+   text-align: center;
+   @include var(font-size,footerP);
+   padding: 5rem 0;
+   line-height: 1.5;
+}
+
+.footer__col+.footer__col {
+   margin: 1rem 0 0 0;
+}
+
+.footer__col {
+   display: flex;
+   flex-direction: column;
+}
+
+.footer__col a {
+   color: #fff;
+}
+
+/** Responsive */
+@media (min-width:780px) {
+   h1 {
+      font-size: 9rem;
+   }
+
+   .logo-wrap {
+      justify-content: start;
+   }
+
+   .nav-toggle {
+      display: none;
+   }
+
+   .nav {
+      visibility: visible;
+      display: flex;
+      justify-content: end;
+      margin: 0;
+   }
+
+   .nav__item+.nav__item {
+      margin-left: 2.5rem;
+   }
+
+   .row {
+      display: flex;
+      justify-content: space-between;
+   }
+
+   .description {
+      margin-top: 0;
+   }
+
+   .col+.col {
+      margin-top: 0;
+      margin-left: 5rem;
+   }
+
+   .section-two>.row {
+      flex-direction: column
+   }
+
+   .right__side {
+      display: flex;
+   }
+
+   .sidebar+.sidebar {
+      margin-left: 2rem;
+   }
+
+   .footer__col {
+      text-align: left;
+   }
+
+   .footer__col+.footer__col {
+      margin: 0 0 1rem 0;
+   }
+}
+
+@media (min-width:1250px) {
+   .left__side {
+      width: 60%;
+   }
+
+   .right__side {
+      width: 30%;
+      display: block;
+   }
+
+   .sidebar+.sidebar {
+      margin-left: 0;
+   }
+
+   .section-two>.row {
+      flex-direction: row;
+   }
+}
