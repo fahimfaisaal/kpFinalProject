@@ -69,9 +69,20 @@ h1 {
   font-size: 6.5rem;
 }
 
+.secondary__heading {
+  -webkit-perspective: 1800;
+          perspective: 1800;
+}
+
 .secondary__heading--color {
   color: #A59678;
   color: var(--heading);
+}
+
+.secondary__heading .text {
+  display: inline-block;
+  background-position: right left;
+  border-radius: 5%;
 }
 
 h2 {

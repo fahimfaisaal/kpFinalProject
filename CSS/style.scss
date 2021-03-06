@@ -34,9 +34,7 @@ $vars : (
    #{$property}: var(--#{$variable});
 }
 
-
 :root {
-
    @each $property,
    $value in $vars {
       --#{$property}: #{$value};
@@ -78,8 +76,17 @@ h1 {
    font-size: 6.5rem;
 }
 
-.secondary__heading--color {
-   @include var(color, heading)
+.secondary__heading {
+   perspective: 1800;
+   &--color {
+      @include var(color, heading)
+   }
+
+   .text {
+      display: inline-block;
+      background-position: right left;
+      border-radius: 5%;
+   }
 }
 
 h2 {
