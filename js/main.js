@@ -15,7 +15,7 @@ navToggle.addEventListener("click", () => {
 const colors = ["#2980b9", "#e74c3c", "#c0392b", "#95a5a6", "#d35400"]
 $('.secondary__heading').innerHTML = splitText($('.secondary__heading'), /\S/g, `<span class='text'>$&</span>`);
 
-(function animation() {
+(function () {
   anime({
     targets: '.secondary__heading .text',
     opacity: 0,
@@ -35,5 +35,3 @@ $('.secondary__heading').innerHTML = splitText($('.secondary__heading'), /\S/g, 
     delay: anime.stagger(10),
   });
 })()
-
-animation()
